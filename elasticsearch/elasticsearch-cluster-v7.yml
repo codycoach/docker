@@ -1,0 +1,46 @@
+version: '2'
+services:
+    es1:
+        extends:
+            file: elasticsearch-core.yml
+            service: elasticsearch-v7
+        container_name: es1
+        environment:
+            - node.name=es1
+            - discovery.seed_hosts=es2,es3
+        volumes:
+            - esdata1:/usr/share/elasticsearch/data
+        ports:
+            - 9200:9200
+            - 9300:9300
+    es2:
+        extends:
+            file: elasticsearch-core.yml
+            service: elasticsearch-v7
+        container_name: es2
+        environment:
+            - node.name=es2
+            - discovery.seed_hosts=es1,es3
+        volumes:
+            - esdata2:/usr/share/elasticsearch/data
+    es3:
+        extends:
+            file: elasticsearch-core.yml
+            service: elasticsearch-v7
+        container_name: es3
+        environment:
+            - node.name=es3
+            - discovery.seed_hosts=es1,es2
+        volumes:
+            - esdata3:/usr/share/elasticsearch/data
+
+volumes:
+    esdata1:
+        driver: local
+    esdata2:
+        driver: local
+    esdata3:
+        driver: local
+
+networks:
+    esnet:
