@@ -1,0 +1,10 @@
+version: '2'
+services:
+  kibana-v7:
+    image: kibana:7.4.1
+    container_name: kibana
+    environment:
+      SERVER_NAME: kibana.coach.org
+      ELASTICSEARCH_HOSTS: es1
+    ports:
+      - 5601:5601
