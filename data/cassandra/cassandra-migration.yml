@@ -6,7 +6,7 @@ services:
       - USER=docker-cassandra-migration
       # - DEBUG_LOG=1 # uncomment to show debug logs during the migration process
     build:
-      context: .
+      context: ""
       dockerfile: cassandra/Cassandra-Migration.Dockerfile
     volumes:
       - ../resources/config/cql:/cql:ro

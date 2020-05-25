@@ -1,0 +1,19 @@
+version: "2"
+services:
+  rabbit-mq:
+#    image: "rabbitmq:3-management"
+    build: .
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "61613:61613"
+      - "4369:4369"
+      - "5671:5671"
+      - "15671:15671"
+      - "25672:25672"
+#    environment:
+#      - RABBITMQ_ERLANG_COOKIE='secret_cookie'
+#      - RABBITMQ_DEFAULT_USER=user
+#      - RABBITMQ_DEFAULT_PASS=user
+#    tty: true
+#    command: bash -c "sleep 10;"
