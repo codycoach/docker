@@ -1,0 +1,13 @@
+version: "3"
+services:
+  dynamodb:
+    container_name: dynamodb
+    image: amazon/dynamodb-local:1.13.6
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./volumes/dynamodb:/data/
+    environment:
+      AWS_ACCESS_KEY_ID: root
+      AWS_SECRET_ACCESS_KEY: pass
+      AWS_REGION: us-east-1
